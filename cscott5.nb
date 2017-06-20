@@ -1,0 +1,507 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19298,        499]
+NotebookOptionsPosition[     18185,        459]
+NotebookOutlinePosition[     18534,        474]
+CellTagsIndexPosition[     18491,        471]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Mathematica Assignment #5", "Title",
+ CellChangeTimes->{{3.6974611852347775`*^9, 3.697461190813634*^9}},
+ TextAlignment->Center],
+
+Cell["Christin Scott 03/09/2017", "Text",
+ CellChangeTimes->{{3.697461201356756*^9, 3.697461221508604*^9}},
+ TextAlignment->Center],
+
+Cell[CellGroupData[{
+
+Cell["Problem 1", "Section",
+ CellChangeTimes->{{3.6974612247417088`*^9, 3.6974612278266706`*^9}}],
+
+Cell[TextData[{
+ "Sylvester\[CloseCurlyQuote]s inequality states that if A and B are ",
+ StyleBox["n x n ",
+  FontSlant->"Italic"],
+ "matrices, then: rank(A) + rank(B) - n \[LessEqual] rank(AB) \[LessEqual] \
+Min(rank(A), rank(b)).  This can be tested, using Mathematica to generate two \
+random ",
+ StyleBox["n x n",
+  FontSlant->"Italic"],
+ " matrices."
+}], "Text",
+ CellChangeTimes->{{3.697461261462965*^9, 3.697461318365101*^9}, {
+  3.6974614080281925`*^9, 3.697461560162264*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", 
+   RowBox[{"RandomInteger", "[", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "20"}], "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{
+  "\"\<The value of n is: \>\"", ",", " ", "n", ",", " ", "\"\<\\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"RandomReal", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "100"}], ",", "100"}], "}"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "n"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "n"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"B", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"RandomReal", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "100"}], ",", "100"}], "}"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "n"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "n"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<A = \>\"", ",", " ", 
+   RowBox[{"A", "//", "MatrixForm"}], ",", " ", "\"\<\\n\>\"", ",", 
+   "\"\<B = \>\"", ",", " ", 
+   RowBox[{"B", "//", "MatrixForm"}], ",", " ", "\"\<\\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{
+  "\"\<The inequality MatrixRank[A] + MatrixRank[B] - n \[LessEqual] \
+MatrixRank[A.B] \[LessEqual] Min[MatrixRank[A], MatrixRank[B]] is: \>\"", ",",
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"MatrixRank", "[", "A", "]"}], "+", 
+     RowBox[{"MatrixRank", "[", "B", "]"}], " ", "-", " ", "n"}], 
+    "\[LessEqual]", 
+    RowBox[{"MatrixRank", "[", 
+     RowBox[{"A", ".", "B"}], "]"}], "\[LessEqual]", 
+    RowBox[{"Min", "[", 
+     RowBox[{
+      RowBox[{"MatrixRank", "[", "A", "]"}], ",", 
+      RowBox[{"MatrixRank", "[", "B", "]"}]}], "]"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.697461568108894*^9, 3.6974615727883863`*^9}, {
+  3.6974616165584097`*^9, 3.697461630498296*^9}, {3.697461681322592*^9, 
+  3.6974619749390025`*^9}, {3.697462251620652*^9, 3.6974622875671663`*^9}, {
+  3.6979821695023136`*^9, 3.6979821937110634`*^9}, {3.6979822277522497`*^9, 
+  3.6979824171451025`*^9}, {3.697982447173437*^9, 3.6979824753845243`*^9}, {
+  3.6980007737330666`*^9, 3.69800078869343*^9}, {3.69800083923396*^9, 
+  3.69800085798146*^9}, {3.698029564016409*^9, 3.698029579372652*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Problem 2", "Section",
+ CellChangeTimes->{{3.6974612318230076`*^9, 3.6974612338229275`*^9}}],
+
+Cell[TextData[{
+ "The Cayley-Hamilton theorem states that an ",
+ StyleBox["n x n",
+  FontSlant->"Italic"],
+ " matrix A must be a root, or Eigenvalue, of its characteristic polynomial.  \
+In other words, det(\[Lambda]I-A) = 0 when \[Lambda] = A.  This too can be \
+tested with Mathematica."
+}], "Text",
+ CellChangeTimes->{{3.697462347884082*^9, 3.6974623710698447`*^9}, {
+   3.69746246327087*^9, 3.697462663026656*^9}, 3.697981899308385*^9}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "n", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", "=", 
+   RowBox[{"RandomInteger", "[", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "20"}], "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{
+  "\"\<The value of n is: \>\"", ",", " ", "n", ",", " ", "\"\<\\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Z", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"RandomInteger", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "100"}], ",", "100"}], "}"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "n"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "n"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Id", "=", 
+   RowBox[{"IdentityMatrix", "[", "n", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Z = \>\"", ",", " ", 
+   RowBox[{"Z", "//", "MatrixForm"}], ",", " ", "\"\<\\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Id = \>\"", ",", " ", 
+   RowBox[{"Id", "//", "MatrixForm"}], ",", " ", "\"\<\\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "[", "x_", "]"}], ":=", 
+  RowBox[{"Det", "[", 
+   RowBox[{
+    RowBox[{"x", "*", "Id"}], "-", "Z"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"terms", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"f", "[", "x", "]"}], "[", 
+       RowBox[{"[", "i", "]"}], "]"}], "/.", 
+      RowBox[{"x", "\[Rule]", "1"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"n", "+", "1"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"zValues", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"MatrixPower", "[", 
+       RowBox[{"Z", ",", "i"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", "n"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1"}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "the", " ", "matrices", " ", "terms", " ", "and", " ", "zValues", " ", 
+     "makes", " ", "a", " ", "column", " ", "of", " ", "the", " ", 
+     "coefficients", " ", "of", " ", "the", " ", "\[IndentingNewLine]", 
+     "characteristic", " ", "polynomial", " ", "and", " ", "a", " ", "column",
+      " ", "of", " ", "the", " ", "vaules", " ", "of", " ", "the", " ", 
+     "matrix", " ", 
+     SuperscriptBox["Z", "0"]}], ",", " ", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["Z", "1"], "..."}], 
+     SuperscriptBox["Z", "n"]}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"isZero", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"terms", "[", 
+       RowBox[{"[", 
+        RowBox[{"i", ",", "1"}], "]"}], "]"}], "*", 
+      RowBox[{"zValues", "[", 
+       RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"n", "+", "1"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"i", "=", "1"}], ";", 
+  RowBox[{"sum", "=", "0"}], ";", 
+  RowBox[{"While", "[", 
+   RowBox[{
+    RowBox[{"i", "<", 
+     RowBox[{"n", "+", "2"}]}], ",", 
+    RowBox[{
+     RowBox[{"sum", "=", 
+      RowBox[{"sum", "+", 
+       RowBox[{"isZero", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", ",", "1"}], "]"}], "]"}]}]}], ";", 
+     RowBox[{"i", "++"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<The det(\[Lambda]I-A)=0 when \[Lambda]=A: \>\"", ",", 
+   RowBox[{"sum", "\[Equal]", 
+    RowBox[{"SparseArray", "[", 
+     RowBox[{
+      RowBox[{"{", "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"n", ",", "n"}], "}"}]}], "]"}]}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.69746267490406*^9, 3.6974627177436943`*^9}, {
+   3.697462858630967*^9, 3.6974628718441525`*^9}, {3.697462920482853*^9, 
+   3.6974629430700393`*^9}, {3.698000884419843*^9, 3.6980009474448557`*^9}, {
+   3.698001003488163*^9, 3.6980010046487775`*^9}, {3.698001127720945*^9, 
+   3.6980011884572577`*^9}, {3.6980012269647293`*^9, 
+   3.6980012617251024`*^9}, {3.6980013558975253`*^9, 
+   3.6980013937433615`*^9}, {3.698001791688444*^9, 3.698001838013924*^9}, {
+   3.6980019033391433`*^9, 3.698001917463708*^9}, {3.6980019691938763`*^9, 
+   3.6980019726111574`*^9}, {3.698002068737954*^9, 3.6980020710761986`*^9}, {
+   3.698002108015168*^9, 3.698002174397402*^9}, {3.6980022918972273`*^9, 
+   3.6980023233244004`*^9}, {3.6980024295979414`*^9, 3.698002456633899*^9}, {
+   3.698002489437394*^9, 3.698002511520598*^9}, {3.6980041169325237`*^9, 
+   3.698004187340623*^9}, {3.6980043409806447`*^9, 3.6980044232916765`*^9}, {
+   3.698004734733204*^9, 3.6980047349659276`*^9}, {3.6980047650768394`*^9, 
+   3.698004935985937*^9}, {3.6980050452608576`*^9, 3.698005110655143*^9}, {
+   3.6980051444926305`*^9, 3.6980053015339165`*^9}, {3.698005331787964*^9, 
+   3.698005427109985*^9}, {3.698005458501627*^9, 3.698005480647889*^9}, {
+   3.6980056183661156`*^9, 3.6980056559016533`*^9}, {3.69800582674469*^9, 
+   3.698005871852*^9}, {3.6980059132157135`*^9, 3.698005914922352*^9}, {
+   3.698005983446645*^9, 3.698005983613305*^9}, {3.698006030021862*^9, 
+   3.6980060849330826`*^9}, {3.6980061215061965`*^9, 
+   3.6980061782551813`*^9}, {3.6980062912266455`*^9, 3.698006294139944*^9}, {
+   3.6980063674072886`*^9, 3.6980063714431634`*^9}, {3.6980064092239366`*^9, 
+   3.69800641737226*^9}, {3.698006546910639*^9, 3.69800654709982*^9}, {
+   3.698006826533616*^9, 3.698006863063188*^9}, {3.698006900354494*^9, 
+   3.698006910814537*^9}, {3.698021206241694*^9, 3.6980212167562895`*^9}, {
+   3.6980212693622985`*^9, 3.6980213011773443`*^9}, {3.6980213420121326`*^9, 
+   3.6980214593903303`*^9}, 3.6980215249727964`*^9, {3.6980216696171737`*^9, 
+   3.698021682095154*^9}, {3.6980217687248335`*^9, 3.698021770515052*^9}, {
+   3.6980219179190793`*^9, 3.6980219657830358`*^9}, {3.6980220225400286`*^9, 
+   3.698022081438079*^9}, {3.698022115100398*^9, 3.698022499604589*^9}, {
+   3.6980225316999035`*^9, 3.6980225319276223`*^9}, {3.6980225652421117`*^9, 
+   3.698022953114024*^9}, {3.6980229852774057`*^9, 3.698022997911539*^9}, {
+   3.698023087603655*^9, 3.6980235291335735`*^9}, {3.698023614186242*^9, 
+   3.6980236792827444`*^9}, {3.698023741985946*^9, 3.6980237726143527`*^9}, {
+   3.6980238053202534`*^9, 3.6980240086009345`*^9}, {3.6980240387028356`*^9, 
+   3.698024043258709*^9}, {3.6980241149905815`*^9, 3.6980241332471094`*^9}, {
+   3.698024168582035*^9, 3.6980241967475767`*^9}, {3.698024227452557*^9, 
+   3.6980243160641403`*^9}, {3.698024466173765*^9, 3.6980244665396166`*^9}, {
+   3.698024545444373*^9, 3.698024575684408*^9}, {3.698027960002308*^9, 
+   3.698027993005994*^9}, {3.698028043251735*^9, 3.6980281513985715`*^9}, {
+   3.698028219301771*^9, 3.6980283026542997`*^9}, {3.698028362616873*^9, 
+   3.6980283791227202`*^9}, {3.6980284231014466`*^9, 3.698028462311092*^9}, {
+   3.6980284928083754`*^9, 3.6980284974052925`*^9}, {3.69802856797906*^9, 
+   3.6980285997755876`*^9}, {3.6980286334434123`*^9, 3.698028645216716*^9}, {
+   3.6980286803534536`*^9, 3.698028682916915*^9}, {3.698028751899648*^9, 
+   3.698028773638522*^9}, {3.69802884335846*^9, 3.69802900215142*^9}, {
+   3.698029066783984*^9, 3.698029169372488*^9}, {3.6980292621690893`*^9, 
+   3.6980293260043783`*^9}, {3.698029377172509*^9, 3.6980294534747725`*^9}, {
+   3.6980296829626093`*^9, 3.698029692799554*^9}, {3.6980297612923145`*^9, 
+   3.698029763601531*^9}, {3.6980759672112927`*^9, 3.698076175024824*^9}, {
+   3.698076833949994*^9, 3.6980768473708797`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Problem 3", "Section",
+ CellChangeTimes->{{3.6974612385699854`*^9, 3.697461240239088*^9}}],
+
+Cell["Consider the matrix:", "Text",
+ CellChangeTimes->{{3.6974631423949184`*^9, 3.6974631455099087`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "k", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"M", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "6"}], ",", "28", ",", "21"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", 
+       RowBox[{"-", "15"}], ",", 
+       RowBox[{"-", "12"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "8"}], ",", "k", ",", "25"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"M", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.6974630796491737`*^9, 3.697463155847837*^9}, {
+  3.697463415547194*^9, 3.6974634158800135`*^9}, {3.6979825624526186`*^9, 
+  3.6979825670195036`*^9}}],
+
+Cell["For each value of k in the set:", "Text",
+ CellChangeTimes->{{3.697463159553895*^9, 3.6974631697877207`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"K", "=", 
+   RowBox[{"{", 
+    RowBox[{"32", ",", "31.9", ",", "31.8", ",", "31.1", ",", "32.2"}], 
+    "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6974631717906437`*^9, 3.6974631897078505`*^9}}],
+
+Cell["we can compute the characteristic polynomial.", "Text",
+ CellChangeTimes->{{3.6974631957616625`*^9, 3.6974632149565916`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"charPoly", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"k", "=", 
+       RowBox[{"K", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ";", 
+      RowBox[{"CharacteristicPolynomial", "[", 
+       RowBox[{"M", ",", "x"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "K", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"charPoly", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.697463261765035*^9, 3.6974633189334297`*^9}, {
+   3.6974633613221292`*^9, 3.6974635677042823`*^9}, 3.6974636282649307`*^9, {
+   3.697463687007835*^9, 3.69746376933188*^9}}],
+
+Cell["\<\
+We can plot these polynomials, to see graphically what is happening.\
+\>", "Text",
+ CellChangeTimes->{{3.6974637981975956`*^9, 3.6974638314134893`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Labeled", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"Evaluate", "@", "charPoly"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "1.5"}], "}"}], ",", 
+     RowBox[{
+     "PlotLabel", "\[Rule]", 
+      "\"\<Characteristic polynomials of M\\nat different evaluations for k\>\
+\""}], ",", 
+     RowBox[{"AxesLabel", "\[Rule]", 
+      RowBox[{"{", "\"\<x\>\"", "}"}]}], ",", 
+     RowBox[{"PlotLegends", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<32\>\"", ",", "\"\<31.9\>\"", ",", "\"\<31.8\>\"", ",", 
+        "\"\<31.1\>\"", ",", "\"\<32.2\>\""}], "}"}]}]}], "]"}], ",", 
+   RowBox[{
+   "{", "\"\<Characteristic Polynomial\\n\\tevaluation at x\>\"", "}"}], ",", 
+   RowBox[{"{", "Left", "}"}], ",", 
+   RowBox[{"RotateLabel", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6974638326206484`*^9, 3.6974640685181427`*^9}, {
+   3.6974644084479017`*^9, 3.697464455789856*^9}, {3.6974645047863984`*^9, 
+   3.697464527532242*^9}, {3.6974648644632406`*^9, 3.6974649842432537`*^9}, {
+   3.697465017225425*^9, 3.6974650200070953`*^9}, 3.6974650501160035`*^9, {
+   3.6974652119288654`*^9, 3.697465216517271*^9}, {3.697465356291973*^9, 
+   3.697465455295529*^9}, {3.697465542335096*^9, 3.6974655705316677`*^9}, {
+   3.6974656109830074`*^9, 3.69746575868783*^9}, {3.6974658065733085`*^9, 
+   3.697465807528225*^9}, {3.697465898785348*^9, 3.6974659003823814`*^9}, {
+   3.6980765108107224`*^9, 3.698076610970394*^9}}],
+
+Cell[TextData[{
+ "From the graph we can see that the characteristic polynomials are similar \
+to each other, with different y intercepts and differing slopes, but that \
+they all cross the x-axis at 1.  To find the eigenvalues for M at each ",
+ StyleBox["k",
+  FontSlant->"Italic"],
+ ", we can use Mathematica\[CloseCurlyQuote]s built in Eigenvalue function"
+}], "Text",
+ CellChangeTimes->{{3.698075108210017*^9, 3.698075121027323*^9}, {
+  3.6980751824933367`*^9, 3.698075322797549*^9}, {3.6980755402698517`*^9, 
+  3.698075548906644*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "k", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Transpose", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"k", "=", 
+       RowBox[{"K", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ";", 
+      RowBox[{"Eigenvalues", "[", "M", "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "K", "]"}]}], "}"}]}], "]"}], "]"}], "//", 
+  "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.698075324468153*^9, 3.698075331799695*^9}, {
+  3.698075366433947*^9, 3.6980754537157493`*^9}, {3.698075487395085*^9, 
+  3.698075512943115*^9}}],
+
+Cell[TextData[{
+ "From this it\[CloseCurlyQuote]s clear that all the eigenvectors of these \
+characteristic polynomials have a common parameter, 1.  From the graph it is \
+also apparent that each of the characteristic polynomials have differing \
+roots apart from the common root, 1.  Changing the value of ",
+ StyleBox["k",
+  FontSlant->"Italic"],
+ " did not affect this common root.  This means under the transformation M, \
+at each evaluation of ",
+ StyleBox["k,",
+  FontSlant->"Italic"],
+ " there is a vector that stays on its span and is stretched by a factor of \
+one, and the value of ",
+ StyleBox["k",
+  FontSlant->"Italic"],
+ " does not affect that scalar."
+}], "Text",
+ CellChangeTimes->{{3.6980755290716004`*^9, 3.6980756516227674`*^9}, {
+  3.698075681908845*^9, 3.6980756997749987`*^9}, {3.6980758087701464`*^9, 
+  3.698075900378113*^9}, {3.698076242047673*^9, 3.698076312589903*^9}, {
+  3.698076359446891*^9, 3.6980764724578996`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1920, 1037},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 134, 2, 101, "Title"],
+Cell[717, 26, 131, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[873, 32, 98, 1, 70, "Section"],
+Cell[974, 35, 484, 12, 30, "Text"],
+Cell[1461, 49, 2451, 62, 145, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3949, 116, 98, 1, 70, "Section"],
+Cell[4050, 119, 440, 9, 30, "Text"],
+Cell[4493, 130, 7705, 167, 316, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12235, 302, 96, 1, 70, "Section"],
+Cell[12334, 305, 106, 1, 30, "Text"],
+Cell[12443, 308, 726, 21, 69, "Input"],
+Cell[13172, 331, 115, 1, 30, "Text"],
+Cell[13290, 334, 234, 6, 30, "Input"],
+Cell[13527, 342, 131, 1, 30, "Text"],
+Cell[13661, 345, 688, 18, 50, "Input"],
+Cell[14352, 365, 162, 3, 30, "Text"],
+Cell[14517, 370, 1497, 31, 50, "Input"],
+Cell[16017, 403, 538, 10, 30, "Text"],
+Cell[16558, 415, 649, 18, 50, "Input"],
+Cell[17210, 435, 947, 20, 49, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
